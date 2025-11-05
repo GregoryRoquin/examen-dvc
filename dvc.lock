@@ -17,3 +17,24 @@ stages:
       md5: ea5e20a3ece6ba76477bdc8f954ad90b.dir
       size: 294499
       nfiles: 4
+  normalize:
+    cmd: python src/data/normalize.py data/processed_data/X_train.csv 
+      data/processed_data/X_test.csv data/processed_data/
+    deps:
+    - path: data/processed_data/
+      hash: md5
+      md5: 2a7d1a8d9d18151c1a30e26e4677e2e5.dir
+      size: 578611
+      nfiles: 6
+    - path: data/processed_data/X_test.csv
+      hash: md5
+      md5: d3be1be617366bc81a9254f075039b51
+      size: 78770
+    - path: data/processed_data/X_train.csv
+      hash: md5
+      md5: 38e9f56c92d20ee33257e3918c901e7e
+      size: 183322
+    - path: src/data/normalize.py
+      hash: md5
+      md5: 7de2afc00f162afb1c393f5414908af1
+      size: 1252
