@@ -1,0 +1,5 @@
+outs:
+- md5: bf89baa696cc0882ecd31f8712c3a2e1
+  size: 1084
+  hash: md5
+  path: model-card.yaml
