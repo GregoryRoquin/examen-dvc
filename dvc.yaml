@@ -6,3 +6,13 @@ stages:
     - src/data/data_split.py
     outs:
     - data/processed_data/
+  normalize:
+    cmd: python src/data/normalize.py data/processed_data/X_train.csv 
+      data/processed_data/X_test.csv data/processed_data/X_train_scaled.csv 
+      data/processed_data/X_test_scaled.csv
+    deps:
+    - X_test_filepath
+    - X_test_scaled_filepath
+    - X_train_filepath
+    - X_train_scaled_filepath
+    - src/data/normalize.py
