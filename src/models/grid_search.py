@@ -3,12 +3,17 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
 from joblib import dump
+import click
+import os
 
-
-def main():
+@click.command()
+@click.argument('x_train_scaled_filepath', type=click.Path(exists=False), required=True)
+@click.argument('y_train_filepath', type=click.Path(exists=False), required=True)
+@click.argument('models_path', type=click.Path(exists=False), required=True)
+def main(x_train_scaled_filepath, y_train_filepath, models_path):
     try:
-        X_train_scaled = pd.read_csv("data/processed_data/X_train_scaled.csv", header=0)
-        y_train = pd.read_csv("data/processed_data/y_train.csv", header=0).values.ravel()
+        X_train_scaled = pd.read_csv(x_train_scaled_filepath, header=0)
+        y_train = pd.read_csv(y_train_filepath, header=0).values.ravel()
 
         model = RandomForestRegressor(random_state=42)
 
@@ -35,7 +40,7 @@ def main():
         print(f"Meilleurs paramètres : {clf_grid.best_params_}")
         print(f"Meilleur score (R²) : {clf_grid.best_score_:.4f}")        
 
-        dump(clf_grid.best_params_, "models/best_params.pkl")
+        dump(clf_grid.best_params_, os.path.join(models_path,"best_params.pkl"))
 
         print("Meilleurs paramètres sauvegardés avec succès !")
 
