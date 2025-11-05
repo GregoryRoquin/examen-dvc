@@ -27,5 +27,5 @@ stages:
       - data/processed_data/y_train.csv
       - src/models/grid_search.py
     outs:
-      - best_params.pkl
+      - models/best_params.pkl
  

@@ -31,7 +31,6 @@ def main(x_train_scaled_filepath, y_train_filepath, models_path):
             cv=5,
             scoring='r2',  # Métrique pour évaluer les performances (R²)
             n_jobs=-1,      # Utilise tous les cœurs disponibles pour accélérer
-            verbose=2       # Affiche les détails du processus
         )
 
         print("Début de l'entraînement avec GridSearchCV...")
